@@ -1,0 +1,26 @@
+#
+# Cookbook Name:: learn_chef_devops
+# Recipe:: default
+#
+# Copyright (c) 2016 The Authors, All Rights Reserved.
+
+file '/var/SampleDevOps.txt' do
+end
+
+directory '/var/DevOps' do
+action :create
+end
+
+service 'firewalld' do
+action :stop
+end
+
+package 'httpd'
+
+service 'httpd' do
+action :start
+end
+
+template'/var/www/html/index.html' do
+source'index.html.erb'
+end
